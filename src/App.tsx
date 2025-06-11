@@ -1,21 +1,16 @@
 import React, { useState } from 'react';
-import { Leaf, Calculator, Target, TrendingUp, Award, ChevronRight } from 'lucide-react';
+import { Leaf, Calculator, Target, TrendingUp, Award, ChevronRight, History, BookOpen, Users, Lightbulb } from 'lucide-react';
 import { ThemeProvider } from './contexts/ThemeContext';
 import HomePage from './components/HomePage';
 import CarbonCalculator from './components/CarbonCalculator';
 import Dashboard from './components/Dashboard';
 import Challenges from './components/Challenges';
+import HistoryTracker from './components/HistoryTracker';
+import PersonalGoals from './components/PersonalGoals';
+import EducationHub from './components/EducationHub';
+import CommunityHub from './components/CommunityHub';
 import ThemeToggle from './components/ThemeToggle';
-
-type Page = 'home' | 'calculator' | 'dashboard' | 'challenges';
-
-interface CarbonData {
-  transport: number;
-  energy: number;
-  food: number;
-  consumption: number;
-  total: number;
-}
+import { CarbonData, Page } from './types';
 
 function AppContent() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
@@ -30,11 +25,22 @@ function AppContent() {
     setCurrentPage('dashboard');
   };
 
+  const navigationItems = [
+    { id: 'home', name: 'Accueil', icon: Leaf, alwaysVisible: true },
+    { id: 'calculator', name: 'Calculateur', icon: Calculator, alwaysVisible: true },
+    { id: 'dashboard', name: 'Résultats', icon: TrendingUp, requiresData: true },
+    { id: 'challenges', name: 'Défis', icon: Target, requiresData: true },
+    { id: 'history', name: 'Historique', icon: History, alwaysVisible: true },
+    { id: 'goals', name: 'Objectifs', icon: Lightbulb, alwaysVisible: true },
+    { id: 'education', name: 'Éducation', icon: BookOpen, alwaysVisible: true },
+    { id: 'community', name: 'Communauté', icon: Users, alwaysVisible: true }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-emerald-50 dark:from-gray-900 dark:via-gray-800 dark:to-emerald-900 transition-colors duration-300">
       {/* Navigation Header */}
       <nav className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-green-100 dark:border-gray-700 sticky top-0 z-50 transition-colors duration-300">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div 
               className="flex items-center space-x-2 cursor-pointer hover:opacity-80 transition-opacity"
@@ -48,55 +54,49 @@ function AppContent() {
               </h1>
             </div>
             
-            <div className="flex items-center space-x-3">
-              <div className="flex items-center space-x-1">
-                <button
-                  onClick={() => navigateTo('home')}
-                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
-                    currentPage === 'home' 
-                      ? 'bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300' 
-                      : 'text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 hover:bg-green-50 dark:hover:bg-gray-800'
-                  }`}
-                >
-                  Accueil
-                </button>
-                <button
-                  onClick={() => navigateTo('calculator')}
-                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-all flex items-center space-x-1 ${
-                    currentPage === 'calculator' 
-                      ? 'bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300' 
-                      : 'text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 hover:bg-green-50 dark:hover:bg-gray-800'
-                  }`}
-                >
-                  <Calculator className="w-4 h-4" />
-                  <span>Calculateur</span>
-                </button>
-                {carbonData && (
-                  <>
+            <div className="flex items-center space-x-1">
+              <div className="hidden lg:flex items-center space-x-1">
+                {navigationItems.map((item) => {
+                  const IconComponent = item.icon;
+                  const isVisible = item.alwaysVisible || (item.requiresData && carbonData);
+                  
+                  if (!isVisible) return null;
+                  
+                  return (
                     <button
-                      onClick={() => navigateTo('dashboard')}
+                      key={item.id}
+                      onClick={() => navigateTo(item.id as Page)}
                       className={`px-3 py-2 rounded-lg text-sm font-medium transition-all flex items-center space-x-1 ${
-                        currentPage === 'dashboard' 
+                        currentPage === item.id 
                           ? 'bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300' 
                           : 'text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 hover:bg-green-50 dark:hover:bg-gray-800'
                       }`}
                     >
-                      <TrendingUp className="w-4 h-4" />
-                      <span>Résultats</span>
+                      <IconComponent className="w-4 h-4" />
+                      <span>{item.name}</span>
                     </button>
-                    <button
-                      onClick={() => navigateTo('challenges')}
-                      className={`px-3 py-2 rounded-lg text-sm font-medium transition-all flex items-center space-x-1 ${
-                        currentPage === 'challenges' 
-                          ? 'bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300' 
-                          : 'text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 hover:bg-green-50 dark:hover:bg-gray-800'
-                      }`}
-                    >
-                      <Target className="w-4 h-4" />
-                      <span>Défis</span>
-                    </button>
-                  </>
-                )}
+                  );
+                })}
+              </div>
+              
+              {/* Menu mobile */}
+              <div className="lg:hidden">
+                <select
+                  value={currentPage}
+                  onChange={(e) => navigateTo(e.target.value as Page)}
+                  className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm transition-colors duration-300"
+                >
+                  {navigationItems.map((item) => {
+                    const isVisible = item.alwaysVisible || (item.requiresData && carbonData);
+                    if (!isVisible) return null;
+                    
+                    return (
+                      <option key={item.id} value={item.id}>
+                        {item.name}
+                      </option>
+                    );
+                  })}
+                </select>
               </div>
               
               {/* Theme Toggle */}
@@ -112,6 +112,10 @@ function AppContent() {
         {currentPage === 'calculator' && <CarbonCalculator onComplete={handleCalculatorComplete} />}
         {currentPage === 'dashboard' && carbonData && <Dashboard data={carbonData} onNavigate={navigateTo} />}
         {currentPage === 'challenges' && carbonData && <Challenges data={carbonData} />}
+        {currentPage === 'history' && <HistoryTracker currentData={carbonData} />}
+        {currentPage === 'goals' && <PersonalGoals currentData={carbonData} />}
+        {currentPage === 'education' && <EducationHub />}
+        {currentPage === 'community' && <CommunityHub currentData={carbonData} />}
       </main>
 
       {/* Footer */}
