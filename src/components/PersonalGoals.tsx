@@ -129,17 +129,6 @@ const PersonalGoals: React.FC<PersonalGoalsProps> = ({ currentData }) => {
         </p>
       </div>
 
-      {/* Bouton d'ajout */}
-      <div className="flex justify-center mb-8">
-        <button
-          onClick={() => setShowAddForm(true)}
-          className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-green-700 hover:to-emerald-700 transition-all duration-200 flex items-center space-x-2"
-        >
-          <Plus className="w-5 h-5" />
-          <span>Nouvel objectif</span>
-        </button>
-      </div>
-
       {/* Formulaire d'ajout/modification */}
       {showAddForm && (
         <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-green-100 dark:border-gray-700 p-6 mb-8 transition-colors duration-300">
