@@ -200,21 +200,21 @@ const Challenges: React.FC<ChallengesProps> = ({ data }) => {
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header avec progression */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">Défis Écologiques</h1>
-        <p className="text-xl text-gray-600 mb-8">
+        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">Défis Écologiques</h1>
+        <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 transition-colors duration-300">
           Relevez des défis personnalisés pour réduire votre empreinte carbone
         </p>
         
         {/* Progression utilisateur */}
-        <div className="bg-white/60 backdrop-blur-sm rounded-2xl border border-green-100 p-6 max-w-md mx-auto">
+        <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-green-100 dark:border-gray-700 p-6 max-w-md mx-auto transition-colors duration-300">
           <div className="flex items-center justify-center space-x-3 mb-4">
             <div className="text-3xl">{level.icon}</div>
             <div>
-              <h3 className="text-lg font-bold text-gray-900">{level.name}</h3>
-              <p className="text-sm text-gray-600">{totalPoints} points</p>
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300">{level.name}</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300">{totalPoints} points</p>
             </div>
           </div>
-          <div className="flex items-center space-x-2 text-sm text-gray-600">
+          <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300">
             <Award className="w-4 h-4" />
             <span>{completedChallenges.size} défis complétés</span>
           </div>
@@ -230,8 +230,8 @@ const Challenges: React.FC<ChallengesProps> = ({ data }) => {
               onClick={() => setSelectedCategory(category.id)}
               className={`flex items-center space-x-2 px-4 py-2 rounded-xl font-medium transition-all ${
                 selectedCategory === category.id
-                  ? `bg-${category.color}-100 text-${category.color}-700 border-2 border-${category.color}-300`
-                  : 'bg-white/60 text-gray-600 border-2 border-transparent hover:bg-gray-100'
+                  ? `bg-${category.color}-100 dark:bg-${category.color}-900/50 text-${category.color}-700 dark:text-${category.color}-300 border-2 border-${category.color}-300 dark:border-${category.color}-600`
+                  : 'bg-white/60 dark:bg-gray-800/60 text-gray-600 dark:text-gray-300 border-2 border-transparent hover:bg-gray-100 dark:hover:bg-gray-700'
               }`}
             >
               <span>{category.icon}</span>
@@ -250,10 +250,10 @@ const Challenges: React.FC<ChallengesProps> = ({ data }) => {
           return (
             <div
               key={challenge.id}
-              className={`bg-white/60 backdrop-blur-sm rounded-2xl border-2 p-6 transition-all hover:shadow-lg cursor-pointer ${
+              className={`bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border-2 p-6 transition-all hover:shadow-lg cursor-pointer ${
                 isCompleted 
-                  ? 'border-green-300 bg-green-50/60' 
-                  : 'border-gray-200 hover:border-green-200'
+                  ? 'border-green-300 dark:border-green-600 bg-green-50/60 dark:bg-green-900/20' 
+                  : 'border-gray-200 dark:border-gray-700 hover:border-green-200 dark:hover:border-green-600'
               }`}
               onClick={() => toggleChallenge(challenge.id)}
             >
@@ -262,14 +262,14 @@ const Challenges: React.FC<ChallengesProps> = ({ data }) => {
                 <div className="flex items-center space-x-3">
                   <div className="text-3xl">{challenge.icon}</div>
                   <div>
-                    <h3 className={`font-bold text-lg ${isCompleted ? 'text-green-800' : 'text-gray-900'}`}>
+                    <h3 className={`font-bold text-lg transition-colors duration-300 ${isCompleted ? 'text-green-800 dark:text-green-300' : 'text-gray-900 dark:text-white'}`}>
                       {challenge.title}
                     </h3>
                     <div className="flex items-center space-x-2 mt-1">
-                      <span className={`px-2 py-1 rounded-full text-xs font-medium bg-${difficultyColor}-100 text-${difficultyColor}-700`}>
+                      <span className={`px-2 py-1 rounded-full text-xs font-medium bg-${difficultyColor}-100 dark:bg-${difficultyColor}-900/50 text-${difficultyColor}-700 dark:text-${difficultyColor}-300 transition-colors duration-300`}>
                         {challenge.difficulty}
                       </span>
-                      <span className="text-sm text-gray-500 flex items-center">
+                      <span className="text-sm text-gray-500 dark:text-gray-400 flex items-center transition-colors duration-300">
                         <Calendar className="w-3 h-3 mr-1" />
                         {challenge.duration}
                       </span>
@@ -278,24 +278,24 @@ const Challenges: React.FC<ChallengesProps> = ({ data }) => {
                 </div>
                 
                 {isCompleted ? (
-                  <CheckCircle className="w-6 h-6 text-green-600" />
+                  <CheckCircle className="w-6 h-6 text-green-600 dark:text-green-400" />
                 ) : (
-                  <div className="w-6 h-6 border-2 border-gray-300 rounded-full" />
+                  <div className="w-6 h-6 border-2 border-gray-300 dark:border-gray-600 rounded-full transition-colors duration-300" />
                 )}
               </div>
 
               {/* Description */}
-              <p className={`text-sm mb-4 ${isCompleted ? 'text-green-700' : 'text-gray-600'}`}>
+              <p className={`text-sm mb-4 transition-colors duration-300 ${isCompleted ? 'text-green-700 dark:text-green-300' : 'text-gray-600 dark:text-gray-300'}`}>
                 {challenge.description}
               </p>
 
               {/* Impact et points */}
               <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-1 text-sm font-medium text-green-600">
+                <div className="flex items-center space-x-1 text-sm font-medium text-green-600 dark:text-green-400 transition-colors duration-300">
                   <TrendingUp className="w-4 h-4" />
                   <span>{challenge.impact}</span>
                 </div>
-                <div className="flex items-center space-x-1 text-sm font-medium text-blue-600">
+                <div className="flex items-center space-x-1 text-sm font-medium text-blue-600 dark:text-blue-400 transition-colors duration-300">
                   <Zap className="w-4 h-4" />
                   <span>{challenge.points} pts</span>
                 </div>

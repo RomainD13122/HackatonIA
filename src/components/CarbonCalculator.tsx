@@ -270,14 +270,14 @@ const CarbonCalculator: React.FC<CarbonCalculatorProps> = ({ onComplete }) => {
       {/* Progress Bar */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-sm font-medium text-gray-700">
+          <span className="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300">
             Étape {currentStep + 1} sur {steps.length}
           </span>
-          <span className="text-sm font-medium text-gray-700">
+          <span className="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300">
             {Math.round(progress)}%
           </span>
         </div>
-        <div className="w-full bg-gray-200 rounded-full h-2">
+        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 transition-colors duration-300">
           <div 
             className="bg-gradient-to-r from-green-500 to-emerald-500 h-2 rounded-full transition-all duration-500 ease-out"
             style={{ width: `${progress}%` }}
@@ -286,14 +286,14 @@ const CarbonCalculator: React.FC<CarbonCalculatorProps> = ({ onComplete }) => {
       </div>
 
       {/* Step Content */}
-      <div className="bg-white/60 backdrop-blur-sm rounded-3xl border border-green-100 shadow-lg p-8">
+      <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-3xl border border-green-100 dark:border-gray-700 shadow-lg p-8 transition-colors duration-300">
         {/* Step Header */}
         <div className="text-center mb-8">
-          <div className={`inline-flex items-center justify-center w-16 h-16 bg-${currentStepData.color}-100 rounded-full mb-4`}>
-            <IconComponent className={`w-8 h-8 text-${currentStepData.color}-600`} />
+          <div className={`inline-flex items-center justify-center w-16 h-16 bg-${currentStepData.color}-100 dark:bg-${currentStepData.color}-900/50 rounded-full mb-4 transition-colors duration-300`}>
+            <IconComponent className={`w-8 h-8 text-${currentStepData.color}-600 dark:text-${currentStepData.color}-400`} />
           </div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">{currentStepData.title}</h2>
-          <p className="text-gray-600">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">{currentStepData.title}</h2>
+          <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">
             Répondez aux questions suivantes pour évaluer votre impact dans cette catégorie
           </p>
         </div>
@@ -302,7 +302,7 @@ const CarbonCalculator: React.FC<CarbonCalculatorProps> = ({ onComplete }) => {
         <div className="space-y-8">
           {currentStepData.questions.map((question, index) => (
             <div key={question.key} className="space-y-4">
-              <label className="block text-lg font-semibold text-gray-900">
+              <label className="block text-lg font-semibold text-gray-900 dark:text-white transition-colors duration-300">
                 {question.label}
               </label>
               
@@ -316,13 +316,13 @@ const CarbonCalculator: React.FC<CarbonCalculatorProps> = ({ onComplete }) => {
                       step={question.step}
                       value={answers[question.key as keyof typeof answers]}
                       onChange={(e) => handleInputChange(question.key, parseInt(e.target.value))}
-                      className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                      className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider transition-colors duration-300"
                     />
-                    <div className={`px-4 py-2 bg-${currentStepData.color}-100 text-${currentStepData.color}-700 rounded-lg font-semibold min-w-[80px] text-center`}>
+                    <div className={`px-4 py-2 bg-${currentStepData.color}-100 dark:bg-${currentStepData.color}-900/50 text-${currentStepData.color}-700 dark:text-${currentStepData.color}-300 rounded-lg font-semibold min-w-[80px] text-center transition-colors duration-300`}>
                       {answers[question.key as keyof typeof answers]} {question.unit}
                     </div>
                   </div>
-                  <div className="flex justify-between text-sm text-gray-500">
+                  <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
                     <span>{question.min} {question.unit}</span>
                     <span>{question.max} {question.unit}</span>
                   </div>
@@ -333,7 +333,7 @@ const CarbonCalculator: React.FC<CarbonCalculatorProps> = ({ onComplete }) => {
                 <select
                   value={answers[question.key as keyof typeof answers]}
                   onChange={(e) => handleInputChange(question.key, e.target.value)}
-                  className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
+                  className="w-full p-4 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-300"
                 >
                   {question.options?.map((option) => (
                     <option key={option.value} value={option.value}>
@@ -353,8 +353,8 @@ const CarbonCalculator: React.FC<CarbonCalculatorProps> = ({ onComplete }) => {
             disabled={currentStep === 0}
             className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-semibold transition-all ${
               currentStep === 0
-                ? 'text-gray-400 cursor-not-allowed'
-                : 'text-gray-600 hover:text-gray-800 hover:bg-gray-100'
+                ? 'text-gray-400 dark:text-gray-600 cursor-not-allowed'
+                : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
             }`}
           >
             <ArrowLeft className="w-5 h-5" />
@@ -388,7 +388,7 @@ const CarbonCalculator: React.FC<CarbonCalculatorProps> = ({ onComplete }) => {
             className={`w-3 h-3 rounded-full transition-all ${
               index <= currentStep
                 ? 'bg-green-500'
-                : 'bg-gray-300'
+                : 'bg-gray-300 dark:bg-gray-600'
             }`}
           />
         ))}

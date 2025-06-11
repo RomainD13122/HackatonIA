@@ -14,14 +14,14 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           <Leaf className="w-10 h-10 text-white" />
         </div>
         
-        <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+        <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight transition-colors duration-300">
           Chaque action quotidienne{' '}
           <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
             compte
           </span>
         </h1>
         
-        <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed transition-colors duration-300">
           Découvrez votre impact carbone personnel, obtenez des conseils personnalisés par IA, 
           et transformez vos habitudes pour un avenir plus durable.
         </p>
@@ -39,100 +39,100 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* Statistics Section */}
       <section className="mb-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="text-center p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-green-100 hover:shadow-lg transition-shadow">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 rounded-xl mb-4">
-              <Globe className="w-6 h-6 text-blue-600" />
+          <div className="text-center p-6 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-green-100 dark:border-gray-700 hover:shadow-lg transition-all duration-300">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 dark:bg-blue-900/50 rounded-xl mb-4">
+              <Globe className="w-6 h-6 text-blue-600 dark:text-blue-400" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">4.8 tonnes</h3>
-            <p className="text-gray-600">Empreinte carbone moyenne française par an</p>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">4.8 tonnes</h3>
+            <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">Empreinte carbone moyenne française par an</p>
           </div>
           
-          <div className="text-center p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-green-100 hover:shadow-lg transition-shadow">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-xl mb-4">
-              <Target className="w-6 h-6 text-green-600" />
+          <div className="text-center p-6 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-green-100 dark:border-gray-700 hover:shadow-lg transition-all duration-300">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 dark:bg-green-900/50 rounded-xl mb-4">
+              <Target className="w-6 h-6 text-green-600 dark:text-green-400" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">2 tonnes</h3>
-            <p className="text-gray-600">Objectif pour limiter le réchauffement à 1.5°C</p>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">2 tonnes</h3>
+            <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">Objectif pour limiter le réchauffement à 1.5°C</p>
           </div>
           
-          <div className="text-center p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-green-100 hover:shadow-lg transition-shadow">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-orange-100 rounded-xl mb-4">
-              <Zap className="w-6 h-6 text-orange-600" />
+          <div className="text-center p-6 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-green-100 dark:border-gray-700 hover:shadow-lg transition-all duration-300">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-orange-100 dark:bg-orange-900/50 rounded-xl mb-4">
+              <Zap className="w-6 h-6 text-orange-600 dark:text-orange-400" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">30%</h3>
-            <p className="text-gray-600">Réduction possible avec des gestes simples</p>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">30%</h3>
+            <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">Réduction possible avec des gestes simples</p>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
       <section className="mb-16">
-        <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+        <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12 transition-colors duration-300">
           Pourquoi utiliser EcoChallenge ?
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-green-100 hover:shadow-lg transition-all hover:border-green-200">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-xl mb-4">
-              <Calculator className="w-6 h-6 text-green-600" />
+          <div className="p-6 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-green-100 dark:border-gray-700 hover:shadow-lg transition-all duration-300 hover:border-green-200 dark:hover:border-green-600">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 dark:bg-green-900/50 rounded-xl mb-4">
+              <Calculator className="w-6 h-6 text-green-600 dark:text-green-400" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">Calcul Précis</h3>
-            <p className="text-gray-600">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 transition-colors duration-300">Calcul Précis</h3>
+            <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">
               Évaluez votre empreinte carbone avec notre calculateur intelligent qui prend en compte 
               transport, énergie, alimentation et consommation.
             </p>
           </div>
           
-          <div className="p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-green-100 hover:shadow-lg transition-all hover:border-green-200">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 rounded-xl mb-4">
-              <TrendingUp className="w-6 h-6 text-blue-600" />
+          <div className="p-6 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-green-100 dark:border-gray-700 hover:shadow-lg transition-all duration-300 hover:border-green-200 dark:hover:border-green-600">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 dark:bg-blue-900/50 rounded-xl mb-4">
+              <TrendingUp className="w-6 h-6 text-blue-600 dark:text-blue-400" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">Visualisation Impact</h3>
-            <p className="text-gray-600">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 transition-colors duration-300">Visualisation Impact</h3>
+            <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">
               Comprenez votre impact avec des graphiques clairs et des comparaisons 
               avec les moyennes nationales et mondiales.
             </p>
           </div>
           
-          <div className="p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-green-100 hover:shadow-lg transition-all hover:border-green-200">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-orange-100 rounded-xl mb-4">
-              <Target className="w-6 h-6 text-orange-600" />
+          <div className="p-6 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-green-100 dark:border-gray-700 hover:shadow-lg transition-all duration-300 hover:border-green-200 dark:hover:border-green-600">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-orange-100 dark:bg-orange-900/50 rounded-xl mb-4">
+              <Target className="w-6 h-6 text-orange-600 dark:text-orange-400" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">Défis Personnalisés</h3>
-            <p className="text-gray-600">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 transition-colors duration-300">Défis Personnalisés</h3>
+            <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">
               Recevez des défis écologiques adaptés à votre profil et à vos habitudes 
               pour un changement progressif et durable.
             </p>
           </div>
           
-          <div className="p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-green-100 hover:shadow-lg transition-all hover:border-green-200">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-100 rounded-xl mb-4">
-              <Award className="w-6 h-6 text-purple-600" />
+          <div className="p-6 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-green-100 dark:border-gray-700 hover:shadow-lg transition-all duration-300 hover:border-green-200 dark:hover:border-green-600">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-100 dark:bg-purple-900/50 rounded-xl mb-4">
+              <Award className="w-6 h-6 text-purple-600 dark:text-purple-400" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">Gamification</h3>
-            <p className="text-gray-600">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 transition-colors duration-300">Gamification</h3>
+            <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">
               Suivez vos progrès, débloquez des achievements et restez motivé 
               dans votre démarche écologique quotidienne.
             </p>
           </div>
           
-          <div className="p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-green-100 hover:shadow-lg transition-all hover:border-green-200">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-pink-100 rounded-xl mb-4">
-              <Users className="w-6 h-6 text-pink-600" />
+          <div className="p-6 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-green-100 dark:border-gray-700 hover:shadow-lg transition-all duration-300 hover:border-green-200 dark:hover:border-green-600">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-pink-100 dark:bg-pink-900/50 rounded-xl mb-4">
+              <Users className="w-6 h-6 text-pink-600 dark:text-pink-400" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">Conseils IA</h3>
-            <p className="text-gray-600">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 transition-colors duration-300">Conseils IA</h3>
+            <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">
               Obtenez des recommandations personnalisées basées sur l'intelligence artificielle 
               pour optimiser votre impact environnemental.
             </p>
           </div>
           
-          <div className="p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-green-100 hover:shadow-lg transition-all hover:border-green-200">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-teal-100 rounded-xl mb-4">
-              <Leaf className="w-6 h-6 text-teal-600" />
+          <div className="p-6 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-green-100 dark:border-gray-700 hover:shadow-lg transition-all duration-300 hover:border-green-200 dark:hover:border-green-600">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-teal-100 dark:bg-teal-900/50 rounded-xl mb-4">
+              <Leaf className="w-6 h-6 text-teal-600 dark:text-teal-400" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">Sans Inscription</h3>
-            <p className="text-gray-600">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 transition-colors duration-300">Sans Inscription</h3>
+            <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">
               Aucun compte requis, interface responsive, accessible à tous. 
               Commencez votre démarche écologique en quelques clics.
             </p>

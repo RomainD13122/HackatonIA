@@ -85,26 +85,26 @@ const Dashboard: React.FC<DashboardProps> = ({ data, onNavigate }) => {
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header avec résultat principal */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">Votre Empreinte Carbone</h1>
+        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">Votre Empreinte Carbone</h1>
         <div className="inline-flex items-center justify-center">
-          <div className="text-6xl font-bold text-gray-900 mr-2">{data.total.toLocaleString()}</div>
-          <div className="text-2xl text-gray-600">kg CO₂/an</div>
+          <div className="text-6xl font-bold text-gray-900 dark:text-white mr-2 transition-colors duration-300">{data.total.toLocaleString()}</div>
+          <div className="text-2xl text-gray-600 dark:text-gray-300 transition-colors duration-300">kg CO₂/an</div>
         </div>
-        <div className={`inline-flex items-center px-4 py-2 rounded-full mt-4 bg-${performance.color}-100 text-${performance.color}-700`}>
+        <div className={`inline-flex items-center px-4 py-2 rounded-full mt-4 bg-${performance.color}-100 dark:bg-${performance.color}-900/50 text-${performance.color}-700 dark:text-${performance.color}-300 transition-colors duration-300`}>
           <span className="font-semibold">{performance.level}</span>
         </div>
-        <p className="text-gray-600 mt-2 max-w-md mx-auto">{performance.message}</p>
+        <p className="text-gray-600 dark:text-gray-300 mt-2 max-w-md mx-auto transition-colors duration-300">{performance.message}</p>
       </div>
 
       {/* Comparaisons */}
       <div className="mb-12">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Comparaison avec les moyennes</h2>
+        <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-6 transition-colors duration-300">Comparaison avec les moyennes</h2>
         <div className="space-y-4">
           {/* Votre impact */}
           <div className="flex items-center space-x-4">
-            <div className="w-32 text-right font-semibold text-gray-900">Votre impact</div>
+            <div className="w-32 text-right font-semibold text-gray-900 dark:text-white transition-colors duration-300">Votre impact</div>
             <div className="flex-1 relative">
-              <div className="bg-gray-200 rounded-full h-8">
+              <div className="bg-gray-200 dark:bg-gray-700 rounded-full h-8 transition-colors duration-300">
                 <div 
                   className="bg-gradient-to-r from-blue-500 to-blue-600 h-8 rounded-full flex items-center justify-end pr-4"
                   style={{ width: `${(data.total / maxValue) * 100}%` }}
@@ -117,9 +117,9 @@ const Dashboard: React.FC<DashboardProps> = ({ data, onNavigate }) => {
 
           {/* Moyenne française */}
           <div className="flex items-center space-x-4">
-            <div className="w-32 text-right font-semibold text-gray-600">Moyenne 🇫🇷</div>
+            <div className="w-32 text-right font-semibold text-gray-600 dark:text-gray-300 transition-colors duration-300">Moyenne 🇫🇷</div>
             <div className="flex-1 relative">
-              <div className="bg-gray-200 rounded-full h-6">
+              <div className="bg-gray-200 dark:bg-gray-700 rounded-full h-6 transition-colors duration-300">
                 <div 
                   className="bg-orange-400 h-6 rounded-full flex items-center justify-end pr-4"
                   style={{ width: `${(frenchAverage / maxValue) * 100}%` }}
@@ -132,9 +132,9 @@ const Dashboard: React.FC<DashboardProps> = ({ data, onNavigate }) => {
 
           {/* Objectif climatique */}
           <div className="flex items-center space-x-4">
-            <div className="w-32 text-right font-semibold text-green-600">Objectif 1.5°C</div>
+            <div className="w-32 text-right font-semibold text-green-600 dark:text-green-400 transition-colors duration-300">Objectif 1.5°C</div>
             <div className="flex-1 relative">
-              <div className="bg-gray-200 rounded-full h-6">
+              <div className="bg-gray-200 dark:bg-gray-700 rounded-full h-6 transition-colors duration-300">
                 <div 
                   className="bg-green-500 h-6 rounded-full flex items-center justify-end pr-4"
                   style={{ width: `${(targetGoal / maxValue) * 100}%` }}
@@ -149,22 +149,22 @@ const Dashboard: React.FC<DashboardProps> = ({ data, onNavigate }) => {
 
       {/* Répartition par catégorie */}
       <div className="mb-12">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Répartition de votre empreinte</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center transition-colors duration-300">Répartition de votre empreinte</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {categories.map((category) => (
-            <div key={category.name} className="bg-white/60 backdrop-blur-sm rounded-2xl border border-green-100 p-6 hover:shadow-lg transition-shadow">
+            <div key={category.name} className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-green-100 dark:border-gray-700 p-6 hover:shadow-lg transition-all duration-300">
               <div className="text-center">
                 <div className="text-4xl mb-3">{category.icon}</div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{category.name}</h3>
-                <div className="text-2xl font-bold text-gray-900 mb-1">{category.value}</div>
-                <div className="text-sm text-gray-600 mb-3">kg CO₂/an</div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 transition-colors duration-300">{category.name}</h3>
+                <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1 transition-colors duration-300">{category.value}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-300 mb-3 transition-colors duration-300">kg CO₂/an</div>
+                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 transition-colors duration-300">
                   <div 
                     className={`bg-${category.color}-500 h-2 rounded-full`}
                     style={{ width: `${(category.value / data.total) * 100}%` }}
                   ></div>
                 </div>
-                <div className="text-xs text-gray-500 mt-2">
+                <div className="text-xs text-gray-500 dark:text-gray-400 mt-2 transition-colors duration-300">
                   {Math.round((category.value / data.total) * 100)}% du total
                 </div>
               </div>
@@ -175,31 +175,31 @@ const Dashboard: React.FC<DashboardProps> = ({ data, onNavigate }) => {
 
       {/* Recommandations IA */}
       <div className="mb-12">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center transition-colors duration-300">
           Recommandations personnalisées par IA
         </h2>
         <div className="space-y-4">
           {recommendations.map((rec, index) => (
-            <div key={index} className="bg-white/60 backdrop-blur-sm rounded-2xl border border-green-100 p-6 hover:shadow-lg transition-shadow">
+            <div key={index} className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-green-100 dark:border-gray-700 p-6 hover:shadow-lg transition-all duration-300">
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                    <Target className="w-5 h-5 text-green-600" />
+                  <div className="w-10 h-10 bg-green-100 dark:bg-green-900/50 rounded-full flex items-center justify-center transition-colors duration-300">
+                    <Target className="w-5 h-5 text-green-600 dark:text-green-400" />
                   </div>
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center space-x-2 mb-2">
-                    <h3 className="font-semibold text-gray-900">{rec.category}</h3>
+                    <h3 className="font-semibold text-gray-900 dark:text-white transition-colors duration-300">{rec.category}</h3>
                     <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                      rec.difficulty === 'Facile' ? 'bg-green-100 text-green-700' :
-                      rec.difficulty === 'Moyen' ? 'bg-yellow-100 text-yellow-700' :
-                      'bg-red-100 text-red-700'
-                    }`}>
+                      rec.difficulty === 'Facile' ? 'bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300' :
+                      rec.difficulty === 'Moyen' ? 'bg-yellow-100 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300' :
+                      'bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300'
+                    } transition-colors duration-300`}>
                       {rec.difficulty}
                     </span>
                   </div>
-                  <p className="text-gray-600 mb-2">{rec.suggestion}</p>
-                  <div className="flex items-center text-sm text-green-600 font-semibold">
+                  <p className="text-gray-600 dark:text-gray-300 mb-2 transition-colors duration-300">{rec.suggestion}</p>
+                  <div className="flex items-center text-sm text-green-600 dark:text-green-400 font-semibold transition-colors duration-300">
                     <TrendingDown className="w-4 h-4 mr-1" />
                     Impact potentiel: {rec.impact}
                   </div>
